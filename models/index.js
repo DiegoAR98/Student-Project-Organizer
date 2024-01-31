@@ -1,7 +1,11 @@
+// Configuring dotenv to load environment variables
+require('dotenv').config();
+
 // Importing the Sequelize library and model definitions
 const Sequelize = require('sequelize');
 const UserModel = require('./user');
 const ProjectModel = require('./project');
+
 
 // Creating a Sequelize instance using environment variables for configuration
 const sequelize = new Sequelize(
