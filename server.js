@@ -2,15 +2,15 @@
 require('dotenv').config();
 
 // Importing necessary modules
-const express = require('express'); // Express framework for handling HTTP requests
-const Sequelize = require('sequelize'); // Sequelize for ORM
+const express = require('express');
+const { sequelize } = require('./models'); // Adjust this path as necessary to where your Sequelize instance is exported
 
-// Importing the Sequelize instance and models from the models directory
-const sequelize = require('./models').sequelize; // Sequelize instance for DB connection
-const { User, Project } = require('./models'); // Destructuring to get User and Project models
+// Importing routes
+const userRoutes = require('./routes/userRoutes'); // Adjust this path as necessary
 
 // Creating an instance of Express
 const app = express();
+
 // Setting the port from environment variables or defaulting to 3000
 const PORT = process.env.PORT || 3000;
 
@@ -18,31 +18,20 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
 
-// Route to create a new user
-app.post('/users', async (req, res) => {
-    try {
-        // Extracting username, email, and password from request body
-        const { username, email, password } = req.body;
-        
-        // Creating a new user using the createUser method (assumed to be defined on User model)
-        const newUser = await User.createUser(username, email, password);
-        // Responding with status 201 (Created) and the new user object
-        res.status(201).json(newUser);
-    } catch (error) {
-        // Logging the error to console and responding with status 500 (Internal Server Error)
-        console.error('Error creating user:', error);
-        res.status(500).send('Error creating user');
-    }
-});
+// Using the userRoutes for any '/users' endpoint
+app.use('/users', userRoutes);
 
 // Synchronizing all models with the database and then starting the server
-sequelize.sync().then(() => {
-    // Starting the server on the defined PORT
-    app.listen(PORT, () => {
-        // Logging the server start message
-        console.log(`Server running on http://localhost:${PORT}`);
+sequelize.sync({ force: false }) // Set 'force: true' only if you want to drop and re-create tables
+    .then(() => {
+        console.log('Database synced');
+        app.listen(PORT, () => {
+            console.log(`Server running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Unable to connect to the database:', error);
     });
-}).catch((error) => {
-    // Logging any errors that occur during Sequelize sync
-    console.error('Unable to connect to the database:', error);
-});
+
+
+const mainRoutes = require('./routes/mainRoutes');
