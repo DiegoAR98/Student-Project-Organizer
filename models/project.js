@@ -1,12 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-// Exporting a function that defines the Project model
-module.exports = (sequelize) => {
-  // Defining the Project class which extends Sequelize's Model class
-  class Project extends Model {}
+class Project extends Model {}
 
-  // Initializing the Project model with its schema definition
-  Project.init({
+Project.init(
+  {
     // Defining the 'id' column as an integer, primary key, auto-incrementing
     id: {
       type: DataTypes.INTEGER,
@@ -39,7 +37,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Users', // Reference to the Users table
+        model: 'user', // Reference to the Users table
         key: 'id' // The column in the Users table that ownerId refers to
       }
     },
@@ -47,10 +45,12 @@ module.exports = (sequelize) => {
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
-    sequelize, // Associating this model with the Sequelize instance
-    modelName: 'Project' // Setting the name of the model
-  });
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'project',
+  }
+);
 
-  // Returning the Project model
-  return Project;
-};
+module.exports = Project

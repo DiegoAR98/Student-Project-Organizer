@@ -1,0 +1,31 @@
+[
+    {
+      "name": "Website Redesign",
+      "description": "A comprehensive redesign of the corporate website to improve user experience and accessibility.",
+      "deadline": "2024-03-15",
+      "status": "active",
+      "ownerId": 1
+    },
+    {
+      "name": "Mobile App Launch",
+      "description": "Launch of a new mobile app to extend our service offerings on iOS and Android platforms.",
+      "deadline": "2024-05-30",
+      "status": "planning",
+      "ownerId": 2
+    },
+    {
+      "name": "SEO Improvement Project",
+      "description": "A project aimed at improving the SEO of our existing web content to increase organic search visibility.",
+      "deadline": "2024-04-20",
+      "status": "active",
+      "ownerId": 3
+    },
+    {
+      "name": "Customer Relationship Management System",
+      "description": "Implementation of a new CRM system to better manage customer interactions, support, and sales.",
+      "deadline": "2024-07-10",
+      "status": "in progress",
+      "ownerId": 4
+    }
+  ]
+  
