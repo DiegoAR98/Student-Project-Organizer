@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add CSS links here -->
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Project Tracker</h1>
+        <!-- Navigation or Login/Logout buttons -->
+    </header>
+
+    <main>
+        <section class="project-listing">
+            <h2>Featured Projects</h2>
+            {{#if projects.length}}
+                <div class="projects">
+                    {{#each projects as |project|}}
+                        <article class="project">
+                            <h3>{{project.name}}</h3>
+                            <p>Description: {{project.description}}</p>
+                            <p>Deadline: {{project.deadline}}</p>
+                            <p>Status: {{project.status}}</p>
+                            <!-- Add more project details as needed -->
+                        </article>
+                    {{/each}}
+                </div>
+            {{else}}
+                <p>There are currently no projects to display.</p>
+            {{/if}}
+        </section>
+    </main>
+
+    <!-- Add scripts here if necessary -->
+</body>
+</html>
