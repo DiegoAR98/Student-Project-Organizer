@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <!-- Include your CSS here -->
+</head>
+<body>
+    <h2>Projects</h2>
+    {{#each projects}}
+    <div class="project">
+        <h3>{{this.name}}</h3>
+        <p>{{this.description}}</p>
+        <p>Deadline: {{this.deadline}}</p>
+        <p>Status: {{this.status}}</p>
+    </div>
+    {{/each}}
+
+    <a href="/logout">Logout</a>
+</body>
+</html>
