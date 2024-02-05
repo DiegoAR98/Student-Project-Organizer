@@ -1,19 +1,28 @@
-document.getElementById('login-form').addEventListener('submit', async (event) => {
+const loginFormHandler = async (event) => {
   event.preventDefault();
-  const email = document.querySelector('#email').value.trim();
-  const password = document.querySelector('#password').value.trim();
 
-  if (email && password) {
+  // Collect values from the login form
+  const username = document.querySelector('#username-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
+  console.log(username, password);
+
+  if (username && password) {
+    // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/projects');
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in.');
+      alert(response.statusText);
     }
   }
-});
+};
+
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
