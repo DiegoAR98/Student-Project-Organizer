@@ -1,0 +1,20 @@
+<div class="col-md-6">
+    <h3>Edit Project</h3>
+
+    <form class="form edit-post-form" id="postid" data-id="{{id}}">
+        <div class="form-group">
+            <label for="post-title">Title</label>
+            <input class="form-input" type="text" id="post-title" name="post-title" value="{{title}}" />
+        </div>
+        <div class="form-group">
+            <label for="post-content">Content</label>
+            <input class="form-input" type="text" id="post-content" name="post-content" value="{{content}}" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="updateBtn">Update Post</button>
+            <button type="submit" class="btn btn-primary" id="deleteBtn" data-id="{{id}}">Delete</button>
+        </div>
+    </form>
+</div>
+
+<script src="./js/editPost.js"></script>
