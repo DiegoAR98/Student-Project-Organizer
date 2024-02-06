@@ -26,4 +26,3 @@ if (process.env.JAWSDB_URL) {
 
 // Export the sequelize instance to be used in other parts of the application
 module.exports = sequelize;
-git add .
