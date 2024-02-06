@@ -2,7 +2,8 @@ const newComment = async (event) => {
     event.preventDefault();
 
     const commentBody = document.querySelector('#comment').value.trim();
-    const post_id = document.querySelector('.post_id').getAttribute('value');
+    // Corrected to use getAttribute('data-id') for retrieving the post's ID
+    const post_id = document.querySelector('.post_id').getAttribute('data-id');
 
     if (commentBody && post_id) {
         const response = await fetch(`/api/comments`, {
@@ -16,7 +17,7 @@ const newComment = async (event) => {
         if (response.ok) {
             document.location.reload();
         } else {
-            alert('Failed to create post');
+            alert('Failed to create comment'); // Corrected the alert message
         }
     }
 };
