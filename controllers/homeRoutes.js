@@ -1,89 +1,111 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Route to render the homepage with project listings
-// This page is accessible to both logged in and not logged in users
 router.get('/', async (req, res) => {
-    try {
-        const projectData = await Project.findAll({
-            include: [{ model: User, attributes: ['name'] }],
-        });
+  try {
+    // Get all projects and JOIN with user data
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User
+        },
+      ],
+    });
 
-        const projects = projectData.map((project) => project.get({ plain: true }));
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
 
-        // Render the 'homepage' handlebars view, passing in project data and login status
-        res.render('homepage', {
-            projects,
-            // The 'logged_in' variable can be used in handlebars to conditionally render content
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      posts, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// Route to render detailed project page by id
-router.get('/project/:id', withAuth, async (req, res) => {
-    try {
-        const projectData = await Project.findByPk(req.params.id, {
-            include: [{ model: User, attributes: ['name'] }],
-        });
+router.get('/post/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [ User,
+        {
+          model: Comment,
+          include: [User],
+        },
+      ],
+    });
 
-        if (!projectData) {
-            res.status(404).send('Project not found');
-            return;
-        }
-
-        const project = projectData.get({ plain: true });
-
-        // Render the 'project' handlebars view, passing in project data and login status
-        res.render('project', {
-            ...project,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
-});
-
-// Route for user's profile - protected by authentication
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Project }],
-        });
-
-        if (!userData) {
-            res.status(404).send('User not found');
-            return;
-        }
-
-        const user = userData.get({ plain: true });
-
-        // Render the 'profile' handlebars view, passing in user data
-        res.render('profile', {
-            ...user,
-            logged_in: true,
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
-});
-
-// Route to render the login page
-// Redirects to profile if user is already logged in
-router.get('/login', (req, res) => {
+    const post = postData.get({ plain: true });
+    
     if (req.session.logged_in) {
-        res.redirect('/profile');
-        return;
-    }
+      if (post.user_id === req.session.user_id) {
+        return res.render('editpost', {
+          ...post,
+          logged_in: true
+        });
+      } else {
+        return res.render('post', {
+          ...post,
+          logged_in: true
+        });
+      };
+    } else {
+      return res.render('post', {
+        ...post,
+        logged_in: false
+     });
+    };
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    res.render('login');
+router.get('/newpost', (req, res) => {
+  res.render('newpost', {
+    logged_in: true
+  });
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post, Comment }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('dashboard', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('signup');
 });
 
 module.exports = router;
