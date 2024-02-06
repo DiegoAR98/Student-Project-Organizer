@@ -47,7 +47,7 @@ async function handlePostDeletion(event) {
       if (response.ok) {
         window.location.href = '/dashboard';
       } else {
-        throw new Error('Failed to delete post.');
+        throw new Error('Failed to delete Project.');
       }
     } catch (error) {
       console.error('Error:', error);

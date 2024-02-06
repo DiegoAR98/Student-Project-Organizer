@@ -11,12 +11,30 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    title: { // Assuming this is the assignment title
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {
+    content: { // Assuming this is the detailed description
+      type: DataTypes.TEXT, // Changed to TEXT for longer descriptions
+      allowNull: false,
+    },
+    course_name: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    due_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    priority: {
+      type: DataTypes.ENUM('high', 'medium', 'low'),
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.ENUM('in progress', 'completed'),
+      allowNull: false,
+      defaultValue: 'in progress',
     },
     date_created: {
       type: DataTypes.DATE,
@@ -36,7 +54,7 @@ Post.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true, // Enabling automatic management of createdAt and updatedAt
     freezeTableName: true,
     underscored: true,
     modelName: 'post',
