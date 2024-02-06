@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <h3>Edit Project</h3>
+    <h3>Edit Assignment</h3>
 
     <form class="form edit-post-form" id="postid" data-id="{{id}}">
         <div class="form-group">
@@ -7,12 +7,35 @@
             <input class="form-input" type="text" id="post-title" name="post-title" value="{{title}}" />
         </div>
         <div class="form-group">
+            <label for="course-name">Course Name</label>
+            <input class="form-input" type="text" id="course-name" name="course-name" value="{{course_name}}" />
+        </div>
+        <div class="form-group">
             <label for="post-content">Content</label>
-            <input class="form-input" type="text" id="post-content" name="post-content" value="{{content}}" />
+            <textarea class="form-input" id="post-content" name="post-content">{{content}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="due-date">Due Date</label>
+            <input type="date" class="form-input" id="due-date" name="due-date" value="{{due_date}}" />
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select class="form-input" id="priority" name="priority">
+                <option value="high" {{#if (eq priority 'high')}}selected{{/if}}>High</option>
+                <option value="medium" {{#if (eq priority 'medium')}}selected{{/if}}>Medium</option>
+                <option value="low" {{#if (eq priority 'low')}}selected{{/if}}>Low</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-input" id="status" name="status">
+                <option value="in progress" {{#if (eq status 'in progress')}}selected{{/if}}>In Progress</option>
+                <option value="completed" {{#if (eq status 'completed')}}selected{{/if}}>Completed</option>
+            </select>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" id="updateBtn">Update Post</button>
-            <button type="submit" class="btn btn-primary" id="deleteBtn" data-id="{{id}}">Delete</button>
+            <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{id}}">Delete</button>
         </div>
     </form>
 </div>

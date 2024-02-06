@@ -1,5 +1,9 @@
-<div class="text-center post_id" value="{{id}}">
+<div class="text-center post_id" data-id="{{id}}">
   <h2>{{title}}</h2>
+  <p>Course: {{course_name}}</p>
+  <p>Due Date: {{format_date due_date}}</p>
+  <p>Priority: {{capitalize priority}}</p>
+  <p>Status: {{capitalize status}}</p>
   <p>Created by {{user.username}} on {{format_date date_created}}</p>
   <p>{{content}}</p>
 </div>
@@ -17,7 +21,7 @@
 <form class="form new-comment-form">
   <div class="form-group">
     <label for="comment">Comment</label>
-    <input class="form-input" type="text" id="comment" name="comment" />
+    <textarea class="form-input" id="comment" name="comment"></textarea> <!-- Changed to textarea for multi-line input -->
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
