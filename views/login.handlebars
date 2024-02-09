@@ -1,42 +1,23 @@
 
-  {{!-- <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="username-login">username:</label>
-        <input class="form-input" type="text" id="username-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-        <a href="/signup">signup</a>
-      </div>
-    </form>
-  </div>--}}
-
-
-
-
-<div class="wrapper">
+<div class="login-form">
     <form action="">
       <h1>Login</h1>
-      <div class="input-box">
-        <input type="text" placeholder="Username" required>
+      
+      <div class="form-group">
+        <input type="text" id="username-login" placeholder="Username" required>
         <i class='bx bxs-user'></i>
       </div>
-      <div class="input-box">
-        <input type="password" placeholder="Password" required>
+      <div class="form-group">
+        <input type="password" id="password-login" placeholder="Password" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
-     <button type="submit" class="btn">Login</button>
+      {{!-- <div class="form-group" --}}
+       <button type="submit" class="btn">Login</button>
       <div class="register-link">
-        <p>Dont have an account? <a href="#">Register</a></p>
+        <p>Dont have an account? <a href="/signup">Register</a></p>
       </div>
+
     </form>
 </div>
 
-<script src="./js/login.js"></script> 
+<script src="/js/login.js"></script> 

@@ -7,7 +7,7 @@
 .header{
     width: 100%;
     height: 100vh;
-    background: #000942;
+    background: #4352b3;
     padding-left: 11%;
     padding-right: 8%;
     position: relative;
@@ -82,7 +82,7 @@ background-position: 0 40%;
 }
 
 
-.wrapper{
+.login-form{
   width: 500px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, .2);
@@ -91,18 +91,18 @@ background-position: 0 40%;
   border-radius: 12px;
   padding: 30px 40px;
 }
-.wrapper h1{
+.login-form h1{
   font-size: 36px;
   text-align: center;
 }
-.wrapper .input-box{
+.login-form .form-group{
   position: relative;
   width: 100%;
   height: 50px;
   
   margin: 30px 0;
 }
-.input-box input{
+.form-group input{
   width: 100%;
   height: 100%;
   background: transparent;
@@ -114,10 +114,10 @@ background-position: 0 40%;
   color: #fff;
   padding: 20px 45px 20px 20px;
 }
-.input-box input::placeholder{
+.form-group input::placeholder{
   color: #fff;
 }
-.input-box i{
+.form-group i{
   position: absolute;
   right: 20px;
   top: 30%;
@@ -125,13 +125,13 @@ background-position: 0 40%;
   font-size: 20px;
 
 }
-.wrapper .remember-forgot{
+.login-form .remember-forgot{
   display: flex;
   justify-content: space-between;
   font-size: 14.5px;
   margin: -15px 0 15px;
 }
-.remember-forgot label input{
+/* .remember-forgot label input{
   accent-color: #fff;
   margin-right: 3px;
 
@@ -143,8 +143,8 @@ background-position: 0 40%;
 }
 .remember-forgot a:hover{
   text-decoration: underline;
-}
-.wrapper .btn{
+} */
+.login-form .btn{
   width: 100%;
   height: 45px;
   background: #fff;
@@ -157,7 +157,7 @@ background-position: 0 40%;
   color: #333;
   font-weight: 600;
 }
-.wrapper .register-link{
+.login-form .register-link{
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
@@ -171,6 +171,111 @@ background-position: 0 40%;
 .register-link p a:hover{
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1266,7 +1371,7 @@ form [type='radio'] {
   }
   .col-md-5 {
     flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+    max-width: 41.66667%;jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
   }
   .col-md-6 {
     flex: 0 0 50%;
