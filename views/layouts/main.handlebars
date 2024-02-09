@@ -15,11 +15,11 @@
       <ul>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <li><a href="/">Home</a><li>
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li></li><a id="logout">Logout</a></li>
+          <li><a href="/" class="button">Home</a><li>
+          <li><a href="/dashboard" class="button">Dashboard</a></li>
+          <li><a id="logout" class="button">Logout</a></li>
         {{else}}
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login" class="button">Login</a></li>
         {{/if}}
       </ul>
     </div>
@@ -30,12 +30,14 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+</body>
     <footer>
+      
     </footer>
   </div>
     <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/js/logout.js" class="button"></script>
   {{/if}}
-</body>
+
 </html>
