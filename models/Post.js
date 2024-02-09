@@ -1,8 +1,10 @@
 // Import Sequelize Model class and DataTypes, and database connection
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
 // Define Post model by extending Sequelize Model
 class Post extends Model {}
+
 // Initialize Post model with schema definition
 Post.init(
   {
@@ -71,5 +73,6 @@ Post.init(
     modelName: 'post', // Sets the model name
   }
 );
+
 // Export the Post model for use in the application
 module.exports = Post;
