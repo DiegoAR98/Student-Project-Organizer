@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -95,3 +96,5 @@ header, .project:not(:last-child) {
     margin-left: -5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
   }
+=======
+>>>>>>> da680ef4b4a1246941edcd6e8f017af4ae44bed6

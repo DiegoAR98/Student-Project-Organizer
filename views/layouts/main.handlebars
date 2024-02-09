@@ -8,6 +8,7 @@
   <title>SPO</title>
   <link rel="stylesheet" href="/css/jass.css"> 
   <link rel="stylesheet" href="/css/style.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
@@ -18,17 +19,40 @@
         <a class="title" href="/">Student Project Organizer</a>
       </h1>
       <nav>
+=======
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <div class="header">
+    <div class="top-nav">
+      <ul>
+>>>>>>> da680ef4b4a1246941edcd6e8f017af4ae44bed6
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <a href="/">Home</a>
-          <a href="/dashboard">Dashboard</a>
-          <a id="logout">Logout</a>
+          <li><a href="/">Home</a><li>
+          <li><a href="/dashboard">Dashboard</a></li> 
+          <li></li><a id="logout">Logout</a></li> 
         {{else}}
+<<<<<<< HEAD
           <a href="/login">Login</a> 
         {{/if}}
       </nav>
     </header>
     <main class="container container-fluid section ">
+=======
+          <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+    </div>
+
+    <div class="side-nav">
+      <a href="/" class="logo-link"><img src="images/Logo2.png" alt="logo"></a>
+    </div>
+
+    
+    <main class="container container-fluid mt-5">
+>>>>>>> da680ef4b4a1246941edcd6e8f017af4ae44bed6
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
