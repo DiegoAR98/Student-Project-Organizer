@@ -1,58 +1,87 @@
+// Import Express router and other required modules
 const router = require('express').Router();
-const { User } = require('../../models');
-
-router.post('/', async (req, res) => {
+const { Post } = require('../../models');
+const withAuth = require('../../utils/auth');
+// Route to create a new post, protected by authentication
+router.post('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
+    // Creates a new post with request body data and user session ID
+    const newPost = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      course_name: req.body.course_name, // Additional field: course_name
+      due_date: req.body.due_date, // Additional field: due_date
+      priority: req.body.priority, // Additional field: priority
+      status: req.body.status, // Additional field: status
+      user_id: req.session.user_id,
     });
+    // Responds with the newly created post object
+    res.status(200).json(newPost);
   } catch (err) {
+    // Handles errors
     res.status(400).json(err);
   }
 });
-
-router.post('/login', async (req, res) => {
+// Route to update an existing post, protected by authentication
+router.put('/:id', withAuth, async (req, res) => {
   try {
-  
-    const userData = await User.findOne({ where: { username: req.body.username } });
-
-    if (!userData) {
-      res.status(400).json({ message: 'Incorrect username or password, please try again' });
-      return;
+    // Updates an existing post identified by URL parameter with request body data
+    const updatePost = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+        course_name: req.body.course_name, // Update course_name
+        due_date: req.body.due_date, // Update due_date
+        priority: req.body.priority, // Update priority
+        status: req.body.status, // Update status
+      },
+      {
+        where: {
+          id: req.params.id, // Identifies which post to update
+        }
+      });
+    // Checks if the update was successful
+    if (updatePost[0] > 0) {
+      res.status(200).json({ message: 'Post updated successfully' });
+    } else {
+      res.status(404).json({ message: 'No post found with this id' });
     }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect username or password, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
-
   } catch (err) {
-    console.error(err);
+    // Handles errors
     res.status(400).json(err);
   }
 });
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
+// Route to delete a post, protected by authentication
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    // Deletes a post identified by URL parameter
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
     });
-  } else {
-    res.status(404).end();
+    // Checks if the deletion was successful
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+    res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (err) {
+    // Handles errors
+    res.status(500).json(err);
   }
 });
-
+// Export the router to be used in the main application
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
