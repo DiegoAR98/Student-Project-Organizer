@@ -69,32 +69,4 @@ router.get('/login', (req, res) => {
   // Redirect logged-in users to dashboard
   if (req.session.logged_in) {
     res.redirect('/dashboard');
-    return;
-  }
-  // Render login page for guests
-  res.render('login');
-});
-// Signup route
-router.get('/signup', (req, res) => {
-  // Redirect logged-in users to dashboard
-  if (req.session.logged_in) {
-    res.redirect('/dashboard');
-    return;
-  }
-  // Render signup page for guests
-  res.render('signup');
-});
-// Export the router
-module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
+    r
