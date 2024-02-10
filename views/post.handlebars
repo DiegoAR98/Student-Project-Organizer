@@ -1,5 +1,5 @@
 <div class="text-center post_id" data-id="{{id}}">
-  <h2>{{title}}</h2>
+  <h4>{{title}}</h4>
   <p>Course: {{course_name}}</p>
   <p>Due Date: {{format_date due_date}}</p>
   <p>Priority: {{capitalize priority}}</p>
@@ -12,21 +12,21 @@
 {{#each comments as |comment|}}
 <div class="text-center">
   <h4>{{comment.commentBody}}</h4>
-  <p>-{{comment.user.username}} on {{format_date comment.date_created}}</p>
+  <p1>-{{comment.user.username}} on {{format_date comment.date_created}}</p1>
 </div>
 {{/each}}
 {{/if}}
 
 {{#if logged_in}}
 <form class="form new-comment-form">
-  <div class="form-group">
+  <div class="form-group-commet">
     <label for="comment">Comment</label>
-    <textarea class="form-input" id="comment" name="comment"></textarea> <!-- Changed to textarea for multi-line input -->
+    <textarea class="form-inputt" id="comment" name="comment"></textarea> <!-- Changed to textarea for multi-line input -->
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="form-group1">
+    <button type="submit" class="btn btn-primary1">Submit</button>
   </div>
 </form>
 {{/if}}
 
-<script src="./js/newComment.js"></script>
+<script src="/js/newComment.js"></script>

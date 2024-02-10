@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +21,6 @@
 =======
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
   <div class="header">
     <div class="top-nav">
@@ -30,10 +28,11 @@
 >>>>>>> da680ef4b4a1246941edcd6e8f017af4ae44bed6
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <li><a href="/">Home</a><li>
-          <li><a href="/dashboard">Dashboard</a></li> 
-          <li></li><a id="logout">Logout</a></li> 
+          <li><a href="/" class="button">Home</a><li>
+          <li><a href="/dashboard" class="button">Dashboard</a></li>
+          <li><a id="logout" class="button">Logout</a></li>
         {{else}}
+<<<<<<< HEAD
 <<<<<<< HEAD
           <a href="/login">Login</a> 
         {{/if}}
@@ -42,20 +41,21 @@
     <main class="container container-fluid section ">
 =======
           <li><a href="/login">Login</a></li>
+=======
+          <li><a href="/login" class="button">Login</a></li>
+>>>>>>> 4e6a1cd72113c8a157de6cc11ab496481000c6e7
         {{/if}}
       </ul>
     </div>
-
     <div class="side-nav">
       <a href="/" class="logo-link"><img src="images/Logo2.png" alt="logo"></a>
     </div>
-
-    
     <main class="container container-fluid mt-5">
 >>>>>>> da680ef4b4a1246941edcd6e8f017af4ae44bed6
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+</body>
     <footer>
             <div class="footer content has-text-centered"></div>
       <div class="foorer content has-text-centered has-text-warning">®️2023 <br>Special thanks to bootcamp</div>
@@ -63,8 +63,7 @@
   </div>
     <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/js/logout.js" class="button"></script>
   {{/if}}
-</body>
 
 </html>
