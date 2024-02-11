@@ -56,3 +56,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This application is deployed on Heroku.[Click here](https://student-project-organizer-f32e9a6cf079.herokuapp.com/) to view the project on Heroku.
 
+<img src="./public/img/DEMO.jpg" width="550" height="400" alt="student-project-organizer.png">
