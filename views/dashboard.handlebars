@@ -1,17 +1,18 @@
-<!-- Loop over each object in the posts array -->
 {{#each posts as |post|}}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <a href="/post/{{post.id}}">
+<div class="flex flex-wrap mb-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
+  <div class="w-full md:w-2/3 p-4">
+    <a href="/post/{{post.id}}" class="text-xl text-blue-600 font-bold hover:text-blue-800">
       <h3>{{post.title}}</h3>
     </a>
-    <p>Course: {{post.course_name}}</p>
-    <p>Due Date: {{format_date post.due_date}}</p>
-    <p>Priority: {{capitalize post.priority}}</p>
-    <p>Status: {{capitalize post.status}}</p>
-    <h5>Posted: {{format_date post.date_created}}</h5>
+    <p class="text-gray-700">Course: <span class="text-gray-900 font-semibold">{{post.course_name}}</span></p>
+    <p class="text-gray-700">Due Date: <span class="text-gray-900 font-semibold">{{format_date post.due_date}}</span></p>
+    <p class="text-gray-700">Priority: <span class="text-gray-900 font-semibold">{{capitalize post.priority}}</span></p>
+    <p class="text-gray-700">Status: <span class="text-gray-900 font-semibold">{{capitalize post.status}}</span></p>
+    <h5 class="text-gray-600">Posted: <span class="text-gray-800">{{format_date post.date_created}}</span></h5>
   </div>
 </div>
 {{/each}}
 
-<button class="btn"><a href="/newpost" class="btn-link">New Project</a></button>
+<button class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+  <a href="/newpost" class="btn-link">New Project</a>
+</button>
