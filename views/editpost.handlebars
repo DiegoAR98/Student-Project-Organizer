@@ -1,41 +1,41 @@
-<div class="col-md-6">
-    <h3>Edit Assignment</h3>
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h3 class="text-lg font-semibold text-gray-800 mb-4">Edit Assignment</h3>
 
-    <form class="form edit-post-form" id="postid" data-id="{{id}}">
-        <div class="form-group">
-            <label for="post-title">Title</label>
-            <input class="form-input" type="text" id="post-title" name="post-title" value="{{title}}" />
+    <form class="edit-post-form" id="postid" data-id="{{id}}">
+        <div class="mb-4">
+            <label for="post-title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+            <input type="text" id="post-title" name="post-title" value="{{title}}" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         </div>
-        <div class="form-group">
-            <label for="course-name">Course Name</label>
-            <input class="form-input" type="text" id="course-name" name="course-name" value="{{course_name}}" />
+        <div class="mb-4">
+            <label for="course-name" class="block text-gray-700 text-sm font-bold mb-2">Course Name</label>
+            <input type="text" id="course-name" name="course-name" value="{{course_name}}" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         </div>
-        <div class="form-group">
-            <label for="post-content">Content</label>
-            <textarea class="form-input" id="post-content" name="post-content">{{content}}</textarea>
+        <div class="mb-4">
+            <label for="post-content" class="block text-gray-700 text-sm font-bold mb-2">Content</label>
+            <textarea id="post-content" name="post-content" class="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm" rows="3">{{content}}</textarea>
         </div>
-        <div class="form-group">
-            <label for="due-date">Due Date</label>
-            <input type="date" class="form-input" id="due-date" name="due-date" value="{{due_date}}" />
+        <div class="mb-4">
+            <label for="due-date" class="block text-gray-700 text-sm font-bold mb-2">Due Date</label>
+            <input type="date" id="due-date" name="due-date" value="{{due_date}}" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
         </div>
-        <div class="form-group">
-            <label for="priority">Priority</label>
-            <select class="form-input" id="priority" name="priority">
+        <div class="mb-4">
+            <label for="priority" class="block text-gray-700 text-sm font-bold mb-2">Priority</label>
+            <select id="priority" name="priority" class="form-select mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 <option value="high" {{#if (eq priority 'high')}}selected{{/if}}>High</option>
                 <option value="medium" {{#if (eq priority 'medium')}}selected{{/if}}>Medium</option>
                 <option value="low" {{#if (eq priority 'low')}}selected{{/if}}>Low</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select class="form-input" id="status" name="status">
+        <div class="mb-4">
+            <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
+            <select id="status" name="status" class="form-select mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 <option value="in progress" {{#if (eq status 'in progress')}}selected{{/if}}>In Progress</option>
                 <option value="completed" {{#if (eq status 'completed')}}selected{{/if}}>Completed</option>
             </select>
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="updateBtn">Update Post</button>
-            <button type="button" class="btn btn-danger" id="deleteBtn" data-id="{{id}}">Delete</button>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="updateBtn">Update Post</button>
+            <button type="button" class="btn btn-danger bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" id="deleteBtn" data-id="{{id}}">Delete</button>
         </div>
     </form>
 </div>

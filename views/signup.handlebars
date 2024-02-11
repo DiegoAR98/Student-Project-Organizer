@@ -1,21 +1,19 @@
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Signup</h2>
 
-  <div class="col-md-6">
-    <h2>Signup</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="username-signup">username:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
+    <form class="signup-form">
+        <div class="mb-4">
+            <label for="username-signup" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+            <input type="text" id="username-signup" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        </div>
+        <div class="mb-4">
+            <label for="password-signup" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+            <input type="password" id="password-signup" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        </div>
+        <div class="flex justify-center">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Signup</button>
+        </div>
     </form>
-  </div>
-
+</div>
 
 <script src="./js/signup.js"></script>

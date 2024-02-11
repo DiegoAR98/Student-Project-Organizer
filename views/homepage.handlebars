@@ -1,15 +1,14 @@
-<!-- Loop over each object in the posts array -->
 {{#each posts as |post|}}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <a href="/post/{{post.id}}">
-      <h3>{{post.title}}</h3>
-      <h5>Course: {{post.course_name}}</h5>
-      <h5>Due: {{format_date post.due_date}}</h5>
-      <h5>Priority: {{capitalize post.priority}}</h5>
-      <h5>Status: {{capitalize post.status}}</h5>
-      <h6>Posted by {{post.user.username}} on {{format_date post.date_created}}</h6>
-      <p>{{post.content}}</p>
+<div class="mb-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
+  <div class="p-4 md:p-6">
+    <a href="/post/{{post.id}}" class="no-underline hover:underline text-blue-600">
+      <h3 class="text-xl text-gray-800 font-bold mb-2">{{post.title}}</h3>
+      <h5 class="text-md text-gray-700">Course: <span class="text-gray-900 font-semibold">{{post.course_name}}</span></h5>
+      <h5 class="text-md text-gray-700">Due: <span class="text-gray-900 font-semibold">{{format_date post.due_date}}</span></h5>
+      <h5 class="text-md text-gray-700">Priority: <span class="text-gray-900 font-semibold">{{capitalize post.priority}}</span></h5>
+      <h5 class="text-md text-gray-700">Status: <span class="text-gray-900 font-semibold">{{capitalize post.status}}</span></h5>
+      <h6 class="text-sm text-gray-600">Posted by {{post.user.username}} on <span class="text-gray-800">{{format_date post.date_created}}</span></h6>
+      <p class="mt-2 text-gray-700">{{post.content}}</p>
     </a>
   </div>
 </div>

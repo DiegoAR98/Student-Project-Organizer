@@ -1,22 +1,24 @@
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold text-gray-800 mb-6">Login</h2>
 
-  <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="username-login">username:</label>
-        <input class="form-input" type="text" id="username-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-        <a href="/signup">signup</a>
-      </div>
+    <form class="login-form">
+        <div class="mb-4">
+            <label for="username-login" class="block text-gray-700 text-sm font-bold mb-2">Username:</label>
+            <input type="text" id="username-login" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        </div>
+        <div class="mb-4">
+            <label for="password-login" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+            <input type="password" id="password-login" class="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Login
+            </button>
+            <a href="/signup" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                Signup
+            </a>
+        </div>
     </form>
-  </div>
-
+</div>
 
 <script src="./js/login.js"></script>

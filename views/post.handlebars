@@ -1,32 +1,36 @@
-<div class="text-center post_id" data-id="{{id}}">
-  <h2>{{title}}</h2>
-  <p>Course: {{course_name}}</p>
-  <p>Due Date: {{format_date due_date}}</p>
-  <p>Priority: {{capitalize priority}}</p>
-  <p>Status: {{capitalize status}}</p>
-  <p>Created by {{user.username}} on {{format_date date_created}}</p>
-  <p>{{content}}</p>
+<div class="text-center mt-8" data-id="{{id}}">
+  <h2 class="text-2xl font-semibold text-gray-800">{{title}}</h2>
+  <p class="mt-2">Course: <span class="font-medium">{{course_name}}</span></p>
+  <p>Due Date: <span class="font-medium">{{format_date due_date}}</span></p>
+  <p>Priority: <span class="font-medium">{{capitalize priority}}</span></p>
+  <p>Status: <span class="font-medium">{{capitalize status}}</span></p>
+  <p>Created by <span class="font-medium">{{user.username}}</span> on <span class="font-medium">{{format_date date_created}}</span></p>
+  <p class="mt-4 mb-8">{{content}}</p>
 </div>
 
 {{#if comments}}
-{{#each comments as |comment|}}
-<div class="text-center">
-  <h4>{{comment.commentBody}}</h4>
-  <p>-{{comment.user.username}} on {{format_date comment.date_created}}</p>
+<div class="mt-8">
+  {{#each comments as |comment|}}
+  <div class="text-center mb-4">
+    <h4 class="text-lg font-semibold text-gray-800">{{comment.commentBody}}</h4>
+    <p class="text-sm font-light">-{{comment.user.username}} on {{format_date comment.date_created}}</p>
+  </div>
+  {{/each}}
 </div>
-{{/each}}
 {{/if}}
 
 {{#if logged_in}}
-<form class="form new-comment-form">
-  <div class="form-group">
-    <label for="comment">Comment</label>
-    <textarea class="form-input" id="comment" name="comment"></textarea> <!-- Changed to textarea for multi-line input -->
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
-</form>
+<div class="mt-8">
+  <form class="new-comment-form max-w-xl mx-auto">
+    <div class="mb-4">
+      <label for="comment" class="block text-gray-700 text-sm font-bold mb-2">Comment</label>
+      <textarea class="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm" id="comment" name="comment"></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+    </div>
+  </form>
+</div>
 {{/if}}
 
 <script src="./js/newComment.js"></script>
