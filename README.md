@@ -45,7 +45,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## Installation
 
-To install the application, clone the repository to your local machine using git clone UPDATE HEREa. Then, navigate to the project directory and run npm install to install all necessary dependencies.
+To install the application, clone the repository to your local machine using git clone (git@github.com:DiegoAR98/Student-Project-Organizer.git). Then, navigate to the project directory and run npm install to install all necessary dependencies.
 
 
 ## License
