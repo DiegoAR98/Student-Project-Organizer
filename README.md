@@ -42,6 +42,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 - `express-session`: For managing user sessions.
 - `mysql2`: As a MySQL client for Node.js.
 - `sequelize`: As a promise-based Node.js ORM for MySQL.
+- `tailwindcss`:  Included for streamlined and efficient styling.
 
 ## Installation
 
