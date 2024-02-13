@@ -1,3 +1,4 @@
+<!-- Main content and details about the post -->
 <div class="text-center mt-8" data-id="{{id}}">
   <h2 class="text-2xl font-semibold text-gray-800">{{title}}</h2>
   <p class="mt-2">Course: <span class="font-medium">{{course_name}}</span></p>
@@ -8,6 +9,7 @@
   <p class="mt-4 mb-8">{{content}}</p>
 </div>
 
+<!-- Comments section, only displayed if comments exist -->
 {{#if comments}}
 <div class="mt-8">
   {{#each comments as |comment|}}
@@ -19,12 +21,13 @@
 </div>
 {{/if}}
 
+<!-- Comment submission form, only displayed if the user is logged in -->
 {{#if logged_in}}
 <div class="mt-8">
-  <form class="new-comment-form max-w-xl mx-auto">
+  <form class="new-comment-form max-w-xl mx-auto" data-id="{{id}}">
     <div class="mb-4">
       <label for="comment" class="block text-gray-700 text-sm font-bold mb-2">Comment</label>
-      <textarea class="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm" id="comment" name="comment"></textarea>
+      <textarea class="form-textarea mt-1 block w-full border-gray-300 rounded-md shadow-sm" id="comment" name="comment" placeholder="Your comment here"></textarea>
     </div>
     <div class="text-center">
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
